@@ -11,8 +11,8 @@ public class PostRequestDto {
     private String password;
     private String content;
 
-    public PostRequestDto(Long id, String title, String userName, String password, String content) {
-        this.id = id;
+    public PostRequestDto(String title, String userName, String password, String content) {
+
         this.title = title;
         this.userName = userName;
         this.password = password;

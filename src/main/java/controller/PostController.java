@@ -31,11 +31,15 @@ public class PostController {
         return postService.createPost(postRequestDto);
     }
 
-    @DeleteMapping("/posts/{id}")
-    public Long deletePost(@PathVariable Long id){
-        return postService.deletePost(id);
+    @DeleteMapping("/posts/{id}/{password}")
+    public Long deletePost(@PathVariable Long id, @PathVariable String password){
+        return postService.deletePost(id,password);
     }
 
+    @PutMapping("/posts/{id}")
+    public Long updatePost(@PathVariable Long id, PostRequestDto postRequestDto){
+        return postService.updatePost(id, postRequestDto);
+    }
 
 
 }

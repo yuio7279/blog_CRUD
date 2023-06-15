@@ -34,7 +34,13 @@ public class PostService {
         return postRepository.findById(id);
     }
 
-    public Long deletePost(Long id){
-        return postRepository.delete(id);
+    public Long deletePost(Long id,String password){
+        return postRepository.delete(id,password);
+    }
+
+    public Long updatePost(Long id, PostRequestDto postRequestDto){
+        Post post = new Post(postRequestDto);
+
+        return postRepository.update(id, post);
     }
 }
