@@ -26,5 +26,19 @@ public class PostRepository {
         return postResponseDto;
     }
 
+    public List<PostResponseDto> findAll(){
+        return store.values().stream().map(PostResponseDto::new).toList();
+
+    }
+
+    public PostResponseDto findById(Long id){
+        if(store.get(id) != null){
+            Post post = store.get(id);
+            PostResponseDto postResponseDto = new PostResponseDto(post);
+            return postResponseDto;
+        }else {
+            throw new IllegalArgumentException("게시글이 존재하지 않습니다.");
+        }
+    }
 
 }
