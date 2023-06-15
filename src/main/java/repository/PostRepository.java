@@ -23,8 +23,8 @@ public class PostRepository {
         return postResponseDto;
     }
 
-    public List<PostResponseDto> findAll() {
-        return store.values().stream().map(PostResponseDto::new).toList();
+    public List<Post> findAll() {
+        return store.values().stream().toList();
 
     }
 
