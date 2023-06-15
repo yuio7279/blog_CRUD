@@ -1,15 +1,15 @@
 package service;
 
-import dto.PostRequestDto;
-import dto.PostResponseDto;
+import com.sparta.post.dto.PostRequestDto;
+import com.sparta.post.dto.PostResponseDto;
+import com.sparta.post.service.PostService;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
-import repository.PostRepository;
+import com.sparta.post.repository.PostRepository;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class PostServiceTest {
 

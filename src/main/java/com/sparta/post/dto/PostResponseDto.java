@@ -1,9 +1,8 @@
-package dto;
+package com.sparta.post.dto;
 
-import entity.Post;
+import com.sparta.post.entity.Post;
 import lombok.Getter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter

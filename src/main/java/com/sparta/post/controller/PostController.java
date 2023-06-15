@@ -1,9 +1,10 @@
-package controller;
+package com.sparta.post.controller;
 
-import dto.PostRequestDto;
-import dto.PostResponseDto;
+import com.sparta.post.dto.PostRequestDto;
+import com.sparta.post.dto.PostResponseDto;
+import com.sparta.post.entity.Post;
 import org.springframework.web.bind.annotation.*;
-import service.PostService;
+import com.sparta.post.service.PostService;
 
 import java.util.List;
 
@@ -22,22 +23,22 @@ public class PostController {
         return postService.getPosts();
     }
     @GetMapping("/posts/{id}")
-    public PostResponseDto getPostOne(@PathVariable Long id){
+    public Post getPostOne(@PathVariable Long id){
         return postService.getPostOne(id);
     }
 
     @PostMapping("/posts")
-    public PostResponseDto createPost(PostRequestDto postRequestDto){
+    public PostResponseDto createPost(@RequestBody PostRequestDto postRequestDto){
         return postService.createPost(postRequestDto);
     }
 
-    @DeleteMapping("/posts/{id}/{password}")
-    public Long deletePost(@PathVariable Long id, @PathVariable String password){
+    @DeleteMapping("/posts")
+    public Long deletePost(@RequestParam Long id, @RequestParam String password){
         return postService.deletePost(id,password);
     }
 
     @PutMapping("/posts/{id}")
-    public Long updatePost(@PathVariable Long id, PostRequestDto postRequestDto){
+    public Long updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto){
         return postService.updatePost(id, postRequestDto);
     }
 
