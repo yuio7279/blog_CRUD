@@ -48,4 +48,16 @@ class PostServiceTest {
 
         Assertions.assertThat(postOne.getId()).isEqualTo(id);
     }
+
+    @Test
+    void deletePost(){
+        PostService postService = new PostService(new PostRepository());
+        postService.createPost(new PostRequestDto(1L, "title", "유저네임", "1234", "content"));
+        postService.createPost(new PostRequestDto(2L, "title2", "유저네임2", "1234", "content2"));
+        Long id = 2L;
+
+        Long deleteId = postService.deletePost(id);
+
+        Assertions.assertThat(deleteId).isEqualTo(2L);
+    }
 }

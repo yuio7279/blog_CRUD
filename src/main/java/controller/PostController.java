@@ -31,6 +31,11 @@ public class PostController {
         return postService.createPost(postRequestDto);
     }
 
+    @DeleteMapping("/posts/{id}")
+    public Long deletePost(@PathVariable Long id){
+        return postService.deletePost(id);
+    }
+
 
 
 }

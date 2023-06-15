@@ -41,4 +41,14 @@ public class PostRepository {
         }
     }
 
+    public Long delete(Long id){
+
+        if(store.get(id) != null){
+            store.remove(id);
+            return id;
+        }else {
+            throw new IllegalArgumentException("게시글이 존재하지 않습니다.");
+        }
+    }
+
 }
