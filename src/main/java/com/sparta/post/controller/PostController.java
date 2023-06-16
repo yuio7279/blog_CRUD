@@ -33,7 +33,7 @@ public class PostController {
     }
 
     @DeleteMapping("/posts")
-    public String deletePost(@RequestParam Long id, @RequestParam String password){
+    public PostResponseDto deletePost(@RequestParam Long id, @RequestParam String password){
         return postService.deletePost(id,password);
     }
 

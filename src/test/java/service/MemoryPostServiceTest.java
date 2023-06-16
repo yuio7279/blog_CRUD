@@ -62,9 +62,9 @@ class MemoryPostServiceTest {
 //        String password1 = "1233";
         String password2 = "1234";
 
-        String deletedMsg = postService.deletePost(id, password2);
+        PostResponseDto postResponseDto = postService.deletePost(id, password2);
 
-        Assertions.assertThat(deletedMsg).isEqualTo(id+"번 글 삭제가 완료되었습니다.");
+        Assertions.assertThat(postResponseDto.getMsg()).isEqualTo(id+"번 글 삭제가 완료되었습니다.");
     }
 
     @Test

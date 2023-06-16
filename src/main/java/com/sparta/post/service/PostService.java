@@ -39,12 +39,14 @@ public class PostService {
 
     }
 
-    public String deletePost(Long id,String password){
+    public PostResponseDto deletePost(Long id,String password){
         Post post = getPostOne(id);
 
         if(post.getPassword().equals(password)){
             postRepository.delete(post);
-            return id+"번 글 삭제가 완료되었습니다.";
+            PostResponseDto postResponseDto = new PostResponseDto(post);
+            postResponseDto.setMsg(id+"번 글 삭제가 완료되었습니다.");
+            return postResponseDto;
         }else{
             throw new InputMismatchException("비밀번호가 올바루지 않습니다.");
         }
