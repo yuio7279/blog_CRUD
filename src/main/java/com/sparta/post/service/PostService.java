@@ -20,7 +20,7 @@ public class PostService {
     }
 
     public List<PostResponseDto> getPosts(){
-        return postRepository.findAll().stream().map(PostResponseDto::new).toList();
+        return postRepository.findAllByOrderByModifiedAtDesc().stream().map(PostResponseDto::new).toList();
 
     }
     public PostResponseDto createPost(PostRequestDto postRequestDto){
@@ -39,23 +39,24 @@ public class PostService {
 
     }
 
-    public Long deletePost(Long id,String password){
+    public String deletePost(Long id,String password){
         Post post = getPostOne(id);
 
         if(post.getPassword().equals(password)){
             postRepository.delete(post);
-            return id;
+            return id+"번 글 삭제가 완료되었습니다.";
         }else{
             throw new InputMismatchException("비밀번호가 올바루지 않습니다.");
         }
     }
 
     @Transactional
-    public Long updatePost(Long id, PostRequestDto postRequestDto){
+    public PostResponseDto updatePost(Long id, PostRequestDto postRequestDto){
         Post post = getPostOne(id);
         if(post.getPassword().equals(postRequestDto.getPassword())){
             post.update(postRequestDto);
-            return id;
+            PostResponseDto postResponseDto = new PostResponseDto(post);
+            return postResponseDto;
         }else{
             throw new InputMismatchException("비밀번호가 올바루지 않습니다.");
         }
